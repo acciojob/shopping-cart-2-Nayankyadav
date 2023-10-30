@@ -4,10 +4,45 @@
 
 <head>
       <link rel="stylesheet" href="styles.css">
+	<style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
 </head>
 
 <body>
 	<!-- the entire body must be written by student -->
+	 <h1>Shopping Cart</h1>
+    <input type="text" id="item-name-input" placeholder="Item Name">
+    <input type="number" id="item-price-input" placeholder="Item Price">
+    <button onclick="addItem()">Add</button>
+    <table>
+        <thead>
+            <tr>
+                <th data-ns-test="item-name">Item Name</th>
+                <th data-ns-test="item-price">Item Price</th>
+            </tr>
+        </thead>
+        <tbody id="item-list">
+            <tr>
+                <td></td>
+                <td>0</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Total: <span data-ns-test="grandTotal">0</span></p>
+    
     <script type="text/javascript" src="./script.js">
 </script>
 
