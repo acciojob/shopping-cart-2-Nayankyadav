@@ -42,7 +42,44 @@
         </tbody>
     </table>
     <p>Total: <span data-ns-test="grandTotal">0</span></p>
-    
+    <script>
+        function addItem() {
+            const itemNameInput = document.getElementById("item-name-input");
+            const itemPriceInput = document.getElementById("item-price-input");
+
+            const itemName = itemNameInput.value.trim();
+            const itemPrice = parseFloat(itemPriceInput.value);
+
+            if (itemName && !isNaN(itemPrice)) {
+                const itemList = document.getElementById("item-list");
+                const newRow = itemList.insertRow(itemList.rows.length - 1);
+                const cell1 = newRow.insertCell(0);
+                const cell2 = newRow.insertCell(1);
+                cell1.innerHTML = itemName;
+                cell2.innerHTML = itemPrice.toFixed(2);
+
+                itemNameInput.value = "";
+                itemPriceInput.value = "";
+
+                updateTotal();
+            } else {
+                alert("Invalid input. Please enter a valid item name and price.");
+            }
+        }
+
+        function updateTotal() {
+            const itemList = document.getElementById("item-list");
+            const totalElement = document.querySelector("[data-ns-test='grandTotal']");
+            let total = 0;
+
+            for (let i = 1; i < itemList.rows.length - 1; i++) {
+                const itemPrice = parseFloat(itemList.rows[i].cells[1].innerHTML);
+                total += itemPrice;
+            }
+
+            totalElement.textContent = total.toFixed(2);
+        }
+    </script>
     <script type="text/javascript" src="./script.js">
 </script>
 
